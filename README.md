@@ -17,3 +17,4 @@ This is the final project about Computer Vision using Deep learning to train mod
 - Define model to training with input as embedding vector from landmark in csv file
 - Evaluate model
 - Convert model -> TFLite format to deploy on Edge device 
+- Testing
