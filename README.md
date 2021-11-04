@@ -5,14 +5,17 @@ This is the final project about Computer Vision using Deep learning to train mod
 
 ### Structure:
 *   Project features will be
+    *   Input image:
+    
+        ![Detection output](input.png)
 
     *   Detection: Output expected.
     
-    ![Detection output](detection.png)
+        ![Detection output](detection.png)
 
     *   Estimation: Output expected.
     
-    ![Estimation output](estimation.png)
+        ![Estimation output](estimation.png)
  
     *   Classification
 
