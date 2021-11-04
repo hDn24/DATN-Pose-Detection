@@ -17,7 +17,7 @@ This is the final project about Computer Vision using Deep learning to train mod
     
         ![Estimation output](estimation.png)
  
-    *   Classification
+    *   Classification: coming soon.
 
 ### Step by step
 - Collect data
