@@ -3,10 +3,26 @@ This is the final project about Computer Vision using Deep learning to train mod
 
 ## Pose detection, estimation and classification.
 
-### Structure: 
+### Structure:
+*   Project features will be
+    *   Input image:
+    
+        ![Detection output](input.png)
 
-1. Detection
+    *   Detection: Output expected.
+    
+        ![Detection output](detection.png)
 
-2. Estimation
+    *   Estimation: Output expected.
+    
+        ![Estimation output](estimation.png)
  
-3. Classification
+    *   Classification
+
+### Step by step
+- Collect data
+- Using TFLite model to estimation yoga pose and get landmarks into csv file
+- Define model to training with input as embedding vector from landmark in csv file
+- Evaluate model
+- Convert model -> TFLite format to deploy on Edge device 
+- Testing
