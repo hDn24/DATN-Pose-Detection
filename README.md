@@ -7,6 +7,10 @@ This is the final project about Computer Vision using Deep learning to train mod
 
 ![Logic](follow_logic.png)
 
+### 17 Landmarks Keypoint from esimation model
+
+![17 landmarks](https://github.com/hDn24/DATN-Pose-Detection/blob/main/17_landmarks.png)
+
 ### Structure:
 *   Project features will be
     *   Input image:
