@@ -3,6 +3,10 @@ This is the final project about Computer Vision using Deep learning to train mod
 
 ## Pose detection, estimation and classification.
 
+### Follow
+
+![Logic](follow_logic.png)
+
 ### Structure:
 *   Project features will be
     *   Input image:
