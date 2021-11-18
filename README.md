@@ -5,25 +5,25 @@ This is the final project about Computer Vision using Deep learning to train mod
 
 ### Follow
 
-![Logic](follow_logic.png)
+![Logic](test_data/follow_logic.png)
 
 ### 17 Landmarks Keypoint from esimation model
 
-![17 landmarks](https://github.com/hDn24/DATN-Pose-Detection/blob/main/17_landmarks.png)
+![17 landmarks](test_data/17_landmarks.png)
 
 ### Structure:
 *   Project features will be
     *   Input image:
     
-        ![Detection output](input.png)
+        ![Detection output](test_data/input.png)
 
     *   Detection: Output expected.
     
-        ![Detection output](detection.png)
+        ![Detection output](test_data/detection.png)
 
     *   Estimation: Output expected.
     
-        ![Estimation output](estimation.png)
+        ![Estimation output](test_data/estimation.png)
  
     *   Classification: coming soon.
 
