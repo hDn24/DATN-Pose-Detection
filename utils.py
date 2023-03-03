@@ -72,3 +72,37 @@ def visualize(
                 )
 
     return image
+
+
+def keep_aspect_ratio_resizer(
+    image: np.ndarray, target_size: int
+) -> Tuple[np.ndarray, Tuple[int, int]]:
+    """Resizes the image.
+    The function resizes the image such that its longer side matches the required
+    target_size while keeping the image aspect ratio. Note that the resizes image
+    is padded such that both height and width are a multiple of 32, which is
+    required by the model. See
+    https://tfhub.dev/google/tfjs-model/movenet/multipose/lightning/1 for more
+    detail.
+    Args:
+        image: The input image.
+        target_size: Desired size that the image should be resize to.
+    Returns:
+        image: The resized image.
+        (target_height, target_width): The actual image size after resize.
+    """
+    height, width, _ = image.shape
+    if height > width:
+        scale = float(target_size / height)
+        target_height = target_size
+        scaled_width = math.ceil(width * scale)
+        image = cv2.resize(image, (scaled_width, target_height))
+        target_width = int(math.ceil(scaled_width / 32) * 32)
+    else:
+        scale = float(target_size / width)
+        target_width = target_size
+        scaled_height = math.ceil(height * scale)
+        image = cv2.resize(image, (target_width, scaled_height))
+        target_height = int(math.ceil(scaled_height / 32) * 32)
+
+    return image, (target_height, target_width)
