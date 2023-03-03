@@ -2,6 +2,12 @@ import cv2
 
 
 def main(width: int = 640, height: int = 480) -> None:
+    """_summary_
+
+    Args:
+        width (int, optional): _description_. Defaults to 640.
+        height (int, optional): _description_. Defaults to 480.
+    """
     camera_id = 0
     # Start capturing video input from the camera
     cap = cv2.VideoCapture(camera_id)
