@@ -10,6 +10,7 @@ def main(width: int = 640, height: int = 480) -> None:
 
     while cap.isOpened():
         _, image = cap.read()
+        image = cv2.flip(image, 1)
 
         # Stop the program if the ESC key is pressed.
         if cv2.waitKey(1) == 27:
