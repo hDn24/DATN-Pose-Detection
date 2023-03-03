@@ -49,7 +49,7 @@ jobs:
         uses: isort/isort-action@v1.0.0
         with:
           run: |
-            isort --profile=black --multi_line_output=24 --check-only .
+            isort . --profile=black --multi_line_output=24 --check-only
 
   black:
     runs-on: ubuntu-latest
