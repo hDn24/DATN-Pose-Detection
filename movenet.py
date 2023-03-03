@@ -1,10 +1,9 @@
 import os
-from typing import List, Dict
+from typing import Dict, List
 
 import cv2
 import numpy as np
-
-from data import Person, BodyPart, person_from_keypoints_with_scores
+from data import BodyPart, Person, person_from_keypoints_with_scores
 
 try:
     # Import TFLite interpreter from tflite_runtime package if it's available.
