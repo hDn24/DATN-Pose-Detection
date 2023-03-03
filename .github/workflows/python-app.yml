@@ -46,7 +46,7 @@ jobs:
       - run: python -m pip install isort
       - name: isort
         # Pinned to v2.0.0.
-        uses: isort/isort-action@v1.0.0
+        uses: isort/isort-action@v2.0.0
         with:
           run: |
             isort . --profile=black --multi_line_output=24
