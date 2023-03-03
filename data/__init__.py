@@ -1,1 +1,7 @@
-from .data import BodyPart, Person, Person, Rectangle, Person, Category, person_from_keypoints_with_scores
+from .data import (
+    BodyPart,
+    Category,
+    Person,
+    Rectangle,
+    person_from_keypoints_with_scores,
+)
