@@ -71,23 +71,4 @@ def visualize(
                     2,
                 )
 
-        # Draw bounding_box with multipose
-        if bounding_box is not None:
-            start_point = bounding_box.start_point
-            end_point = bounding_box.end_point
-            cv2.rectangle(image, start_point, end_point, keypoint_color, 1)
-            # Draw id text when tracker enabled for MoveNet MultiPose model.(
-            # id = -1 with single pose model or when tracker is None)
-            if person.id != -1:
-                id_text = "id = " + str(person.id)
-                cv2.putText(
-                    image,
-                    id_text,
-                    start_point,
-                    cv2.FONT_HERSHEY_PLAIN,
-                    1,
-                    (0, 0, 255),
-                    1,
-                )
-
     return image
