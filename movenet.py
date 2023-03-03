@@ -3,6 +3,7 @@ from typing import Dict, List
 
 import cv2
 import numpy as np
+
 from data import BodyPart, Person, person_from_keypoints_with_scores
 
 try:
