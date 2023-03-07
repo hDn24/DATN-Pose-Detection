@@ -5,8 +5,8 @@ def main(width: int = 640, height: int = 480) -> None:
     """Main scripts to run pose estimation.
 
     Args:
-        width: _description_. Defaults to 640.
-        height: _description_. Defaults to 480.
+        width: Width of camera. Defaults to 640.
+        height: Height of camera. Defaults to 480.
     """
     camera_id = 0
     # Start capturing video input from the camera
