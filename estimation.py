@@ -2,6 +2,8 @@ import cv2
 import argparse
 import time
 
+fps_avg_frame_count = 10
+
 
 def run(
     estimation_model: str,
@@ -16,15 +18,24 @@ def run(
         width: Width of camera. Defaults to 640.
         height: Height of camera. Defaults to 480.
     """
-    camera_id = 0
+
+    # Variables to calculate FPS
+    counter, fps = 0, 0
+    start_time = time.time()
+
     # Start capturing video input from the camera
     cap = cv2.VideoCapture(camera_id)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
-    # Variables to calculate FPS
-    counter, fps = 0, 0
-    start_time = time.time()
+    # Visualization parameters
+    row_size = 20  # pixels
+    left_margin = 24  # pixels
+    text_color = (0, 0, 255)  # red
+    font_size = 1
+    font_thickness = 1
+    max_detection_results = 3
+    fps_avg_frame_count = 10
 
     while cap.isOpened():
         _, image = cap.read()
