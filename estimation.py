@@ -2,7 +2,7 @@ import cv2
 
 
 def main(width: int = 640, height: int = 480) -> None:
-    """Main scripts to run pose estimation.
+    """Continuously run inference on images acquired from the camera.
 
     Args:
         width: Width of camera. Defaults to 640.
