@@ -1,7 +1,8 @@
 import cv2
+import argparse
 
 
-def main(
+def run(
     estimation_model: str,
     label_file: str,
     camera_id: int,
@@ -32,6 +33,46 @@ def main(
 
     cap.release()
     cv2.destroyAllWindows()
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    parser.add_argument(
+        "--model",
+        help="Name of estimation model.",
+        required=False,
+        default="movenet_lightning",
+    )
+    parser.add_argument(
+        "--label_file",
+        help="Label file for classification.",
+        required=False,
+        default="labels.txt",
+    )
+    parser.add_argument("--cameraId", help="Id of camera.", required=False, default=0)
+    parser.add_argument(
+        "--frameWidth",
+        help="Width of frame to capture from camera.",
+        required=False,
+        default=640,
+    )
+    parser.add_argument(
+        "--frameHeight",
+        help="Height of frame to capture from camera.",
+        required=False,
+        default=480,
+    )
+    args = parser.parse_args()
+
+    run(
+        args.model,
+        args.label_file,
+        int(args.cameraId),
+        args.frameWidth,
+        args.frameHeight,
+    )
 
 
 if __name__ == "__main__":
