@@ -21,6 +21,10 @@ def run(
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
 
+    # Variables to calculate FPS
+    counter, fps = 0, 0
+    start_time = time.time()
+
     while cap.isOpened():
         _, image = cap.read()
         image = cv2.flip(image, 1)
