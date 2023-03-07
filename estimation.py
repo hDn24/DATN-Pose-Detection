@@ -29,6 +29,12 @@ def run(
         _, image = cap.read()
         image = cv2.flip(image, 1)
 
+        # Calculate the FPS
+        if counter % fps_avg_frame_count == 0:
+            end_time = time.time()
+            fps = fps_avg_frame_count / (end_time - start_time)
+            start_time = time.time()
+
         # Stop the program if the ESC key is pressed.
         if cv2.waitKey(1) == 27:
             break
