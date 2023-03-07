@@ -6,8 +6,8 @@ def run(
     estimation_model: str,
     label_file: str,
     camera_id: int,
-    width: int = 640,
-    height: int = 480,
+    width: int,
+    height: int,
 ) -> None:
     """Continuously run inference on images acquired from the camera.
 
