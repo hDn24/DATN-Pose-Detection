@@ -2,7 +2,7 @@ import cv2
 import argparse
 import time
 from ml.movenet import Movenet
-import utils
+from utils import utils
 
 fps_avg_frame_count = 10
 
