@@ -1,6 +1,8 @@
 import cv2
 import argparse
 import time
+from ml.movenet import Movenet
+from utils import utils
 
 fps_avg_frame_count = 10
 
@@ -15,9 +17,13 @@ def run(
     """Continuously run inference on images acquired from the camera.
 
     Args:
+        estimation_model: Name of the TFLite pose estimation model.
+        label_file: Path to the label file for the pose classification model. Class
+        camera_id: The camera id to be passed to OpenCV.
         width: Width of camera. Defaults to 640.
         height: Height of camera. Defaults to 480.
     """
+    pose_detector = Movenet(estimation_model)
 
     # Variables to calculate FPS
     counter, fps = 0, 0
@@ -39,7 +45,14 @@ def run(
 
     while cap.isOpened():
         _, image = cap.read()
+
+        counter += 1
         image = cv2.flip(image, 1)
+
+        list_persons = [pose_detector.detect(image)]
+
+        # Draw keypoints and edges on input image
+        image = utils.visualize(image, list_persons)
 
         # Calculate the FPS
         if counter % fps_avg_frame_count == 0:
@@ -78,7 +91,7 @@ def main():
         "--model",
         help="Name of estimation model.",
         required=False,
-        default="movenet_lightning",
+        default="./assets/movenet_lightning",
     )
     parser.add_argument(
         "--label_file",
