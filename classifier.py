@@ -1,5 +1,7 @@
 import os
 from typing import List
+from data import Category, Person
+
 
 from tflite_runtime.interpreter import Interpreter
 
@@ -41,5 +43,38 @@ class Classifier(object):
         with open(label_path, "r") as f:
             return [line.strip() for _, line in enumerate(f.readlines())]
 
-    def classify(self):
-        pass
+    def classify_pose(self, person: Person):
+        min_score = min([keypoint.score for keypoint in person.keypoints])
+        if min_score < self.score_threshold:
+            return [
+                Category(label=class_name, score=0)
+                for class_name in self.pose_class_names
+            ]
+
+        # Flatten the input and add an extra dimension to match with the requirement
+        # of the TFLite model.
+        input_tensor = [
+            [keypoint.coordinate.y, keypoint.coordinate.x, keypoint.score]
+            for keypoint in person.keypoints
+        ]
+        input_tensor = np.array(input_tensor).flatten().astype(np.float32)
+        input_tensor = np.expand_dims(input_tensor, axis=0)
+
+        # Set the input and run inference.
+        self._interpreter.set_tensor(self._input_index, input_tensor)
+        self._interpreter.invoke()
+
+        # Extract the output and squeeze the batch dimension
+        output = self._interpreter.get_tensor(self._output_index)
+        output = np.squeeze(output, axis=0)
+
+        # Sort output by probability descending.
+        prob_descending = sorted(
+            range(len(output)), key=lambda k: output[k], reverse=True
+        )
+        prob_list = [
+            Category(label=self.pose_class_names[idx], score=output[idx])
+            for idx in prob_descending
+        ]
+
+        return prob_list
