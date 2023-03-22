@@ -5,7 +5,7 @@ from tflite_runtime.interpreter import Interpreter
 
 
 class Classifier(object):
-    def __init(self, model_name, label_file, score_threshold):
+    def __init(self, model_name: str, label_file: str, score_threshold: float) -> None:
         # Append TFLITE extension to model_name if there's no extension
         _, ext = os.path.splitext(model_name)
         if not ext:
@@ -22,7 +22,7 @@ class Classifier(object):
         self.pose_class_names = self._load_labels(label_file)
         self.score_threshold = score_threshold
 
-    def _load_labels(self, label_path):
+    def _load_labels(self, label_path: str) -> List[str]:
         with open(label_path, "r") as f:
             return [line.strip() for _, line in enumerate(f.readlines())]
 
