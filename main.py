@@ -1,6 +1,8 @@
-import cv2
 import argparse
 import time
+
+import cv2
+
 from ml.movenet import Movenet
 from utils import utils
 
