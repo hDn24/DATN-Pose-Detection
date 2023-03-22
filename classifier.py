@@ -6,6 +6,13 @@ from tflite_runtime.interpreter import Interpreter
 
 class Classifier(object):
     def __init(self, model_name: str, label_file: str, score_threshold: float) -> None:
+        """Initialize a pose classification model.
+
+        Args:
+          model_name: Name of the TFLite pose classification model.
+          label_file: Path of the label list file.
+          score_threshold: The minimum keypoint score to run classification.
+        """
         # Append TFLITE extension to model_name if there's no extension
         _, ext = os.path.splitext(model_name)
         if not ext:
@@ -23,6 +30,14 @@ class Classifier(object):
         self.score_threshold = score_threshold
 
     def _load_labels(self, label_path: str) -> List[str]:
+        """Load label list from file.
+
+        Args:
+            label_path: Full path of label file.
+
+        Returns:
+            An array contains the list of labels.
+        """
         with open(label_path, "r") as f:
             return [line.strip() for _, line in enumerate(f.readlines())]
 
