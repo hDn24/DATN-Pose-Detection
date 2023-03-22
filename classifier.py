@@ -22,5 +22,9 @@ class Classifier(object):
         self.pose_class_names = self._load_labels(label_file)
         self.score_threshold = score_threshold
 
+    def _load_labels(self, label_path):
+        with open(label_path, "r") as f:
+            return [line.strip() for _, line in enumerate(f.readlines())]
+
     def classify(self):
         pass
