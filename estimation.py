@@ -91,7 +91,7 @@ def main():
         "--model",
         help="Name of estimation model.",
         required=False,
-        default="movenet_lightning",
+        default="./assets/movenet_lightning",
     )
     parser.add_argument(
         "--label_file",
