@@ -1,9 +1,9 @@
 import os
 from typing import List
-from data import Category, Person
-
 
 from tflite_runtime.interpreter import Interpreter
+
+from data import Category, Person
 
 
 class Classifier(object):
@@ -11,9 +11,9 @@ class Classifier(object):
         """Initialize a pose classification model.
 
         Args:
-          model_name: Name of the TFLite pose classification model.
-          label_file: Path of the label list file.
-          score_threshold: The minimum keypoint score to run classification.
+            model_name: Name of the TFLite pose classification model.
+            label_file: Path of the label list file.
+            score_threshold: The minimum keypoint score to run classification.
         """
         # Append TFLITE extension to model_name if there's no extension
         _, ext = os.path.splitext(model_name)
@@ -47,11 +47,11 @@ class Classifier(object):
         """Run classification on an input.
 
         Args:
-          person: A data.Person instance.
+            person: A data.Person instance.
 
         Returns:
-          A list of prediction result in the data.Class format.
-          Sorted by probability descending.
+            A list of prediction result in the data.Class format.
+            Sorted by probability descending.
         """
         # Check if all keypoints are detected before running the classifier.
         # If there's a keypoint below the threshold, return zero probability for all
