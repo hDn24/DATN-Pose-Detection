@@ -17,6 +17,9 @@ def run(
     """Continuously run inference on images acquired from the camera.
 
     Args:
+        estimation_model: Name of the TFLite pose estimation model.
+        label_file: Path to the label file for the pose classification model. Class
+        camera_id: The camera id to be passed to OpenCV.
         width: Width of camera. Defaults to 640.
         height: Height of camera. Defaults to 480.
     """
@@ -47,6 +50,8 @@ def run(
         image = cv2.flip(image, 1)
 
         list_persons = [pose_detector.detect(image)]
+
+        # Draw keypoints and edges on input image
         image = utils.visualize(image, list_persons)
 
         # Calculate the FPS
