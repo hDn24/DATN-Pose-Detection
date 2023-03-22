@@ -43,7 +43,19 @@ class Classifier(object):
         with open(label_path, "r") as f:
             return [line.strip() for _, line in enumerate(f.readlines())]
 
-    def classify_pose(self, person: Person):
+    def classify_pose(self, person: Person) -> List[Category]:
+        """Run classification on an input.
+
+        Args:
+          person: A data.Person instance.
+
+        Returns:
+          A list of prediction result in the data.Class format.
+          Sorted by probability descending.
+        """
+        # Check if all keypoints are detected before running the classifier.
+        # If there's a keypoint below the threshold, return zero probability for all
+        # class.
         min_score = min([keypoint.score for keypoint in person.keypoints])
         if min_score < self.score_threshold:
             return [
