@@ -1,6 +1,7 @@
 import os
 from typing import List
 
+import numpy as np
 from tflite_runtime.interpreter import Interpreter
 
 from data import Category, Person
