@@ -1,4 +1,4 @@
-# Research and deployment to build pose estimation application.
+# Pose estimation final project.
 
 This is the final project about `computer vision` using `deep learning` to train model and deploy on `edge device`.
 
