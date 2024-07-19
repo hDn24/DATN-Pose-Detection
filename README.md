@@ -4,7 +4,7 @@ This is the final project about `computer vision` using `deep learning` to train
 
 ## Pose detection, estimation and classification.
 
-### Follow
+### Flow
 
 ![Logic](test_data/follow_logic.png)
 
